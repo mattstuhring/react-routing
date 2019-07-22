@@ -24,15 +24,14 @@ class ReviewDetail extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log('REVIEW: ', this.state.review);
 
     this.setState({ review: "" });
   }
 
   getMovieDetails = () => {
-    const URL = `https://api.themoviedb.org/3/movie/${this.state.movieId}?api_key=${process.env.REACT_APP_MOVIES_API_KEY}&language=en-US`;
     return request
-      .get(URL)
+      .get('/movie')
+      .query({ data: this.state.movieId })
       .then(res => {
         console.log('RES_BODY: ', res.body);
         this.setState({ movie: res.body });
@@ -45,7 +44,6 @@ class ReviewDetail extends React.Component {
   render() {
     let { title, overview, popularity, poster_path, release_date } = this.state.movie;
     poster_path = `https://image.tmdb.org/t/p/w342${poster_path}`;
-    popularity = `%${100 * parseFloat(popularity)}`;
 
     return (
       <div className="search">
@@ -68,7 +66,7 @@ class ReviewDetail extends React.Component {
               name="review"
               value={this.state.review}
               onChange={this.handleChange}
-              placeholder="Enter in your review"
+              placeholder="Share your review"
               required
             />
           </div>

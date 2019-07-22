@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 function Nav(props) {
   return (
     <nav>
-      <h3>Logo</h3>
+      <Link to="/">
+        <h3>Logo</h3>
+      </Link>
       <ul className="nav-links">
-        <Link to="/">
-          <li>Home</li>
-        </Link>
         <Link to="/review">
           <li>Review</li>
         </Link>

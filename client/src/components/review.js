@@ -27,13 +27,8 @@ class Review extends React.Component {
   }
 
   getMovies = async (query) => {
-    const URL = `https://api.themoviedb.org/3/search/movie?query=${query}&api_key=${process.env.REACT_APP_MOVIES_API_KEY}&language=en-US&page=1&include_adult=true`
-    
     try {
-      const result = await request.get(URL);
-
-      const moviesResult = await request.get('/movies');
-      console.log('MOVIE RESULTS: ', moviesResult);
+      const result = await request.get('/movies').query({ data: query });
 
       this.setState({ results: result.body.results });
     } catch(err) {
