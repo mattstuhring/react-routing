@@ -11,7 +11,10 @@ function Nav(props) {
         </Link>
         <Link to="/review">
           <li>Review</li>
-          </Link>
+        </Link>
+        <Link to="/profile">
+          <li>Profile</li>
+        </Link>
         <Link to="/about">
           <li>About</li>
         </Link>
