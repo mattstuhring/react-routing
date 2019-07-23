@@ -20,7 +20,7 @@ app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
 
 // Get movies related to user search
 app.get('/movies', (req, res) => {
-  const URL = `https://api.themoviedb.org/3/search/movie?query=${req.query.data}&api_key=${process.env.MOVIES_API_KEY}&language=en-US&page=1&include_adult=true`;
+  const URL = `https://api.themoviedb.org/3/search/movie?query=${req.query.data}&api_key=${process.env.MOVIES_API_KEY}&language=en-US&page=1&include_adult=false`;
 
   request
     .get(URL)
